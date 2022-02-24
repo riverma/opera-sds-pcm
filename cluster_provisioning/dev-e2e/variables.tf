@@ -1,6 +1,6 @@
 # globals
 #
-# venue : userId 
+# venue : userId
 # counter : 1-n
 # private_key_file : the equivalent to .ssh/id_rsa or .pem file
 #
@@ -13,7 +13,7 @@ variable "artifactory_repo" {
 }
 
 variable "artifactory_mirror_url" {
-  default = "s3://opera-dev/artifactory_mirror"
+  default = "s3://opera-dev-cc-fwd-ci"
 }
 
 variable "hysds_release" {
@@ -131,7 +131,7 @@ variable "use_grq_aws_es_private_verdi" {
 }
 
 variable "subnet_id" {
-  default = "subnet-8ecc5dd3"
+  default = "subnet-000eb551ad06392c7"
 }
 
 variable "verdi_security_group_id" {
@@ -398,6 +398,10 @@ variable "l0a_timer_trigger_frequency" {
   default = "rate(15 minutes)"
 }
 
+variable "data_subscriber_timer_trigger_frequency" {
+  default = "rate(60 minutes)"
+}
+
 variable "obs_acct_report_timer_trigger_frequency" {
   default = "cron(0 0 * * ? *)"
 }
@@ -459,16 +463,23 @@ variable "es_bucket_role_arn" {
   default = "arn:aws:iam::271039147104:role/am-es-role"
 }
 
+variable "artifactory_fn_user" {
+  default = ""
+}
+
+variable "artifactory_fn_api_key" {
+  default = ""
+}
+
 # ami vars
-# duplicated from modules/common here so INT would pick up the values from its override.tf
 variable "amis" {
   type = map(string)
   default = {
-    mozart    = "ami-01aa6dbec644a2672"
-    metrics   = "ami-0ee90e1f71e532095"
-    grq       = "ami-0872577aec2e40df1"
-    factotum  = "ami-06158820898dd2dfd"
-    ci        = "ami-00baa2004b03f6090"
-    autoscale = "ami-00baa2004b03f6090"
+    mozart    = "ami-02fcd254c71ff0fa0"  # opera dev mozart - ol8
+    metrics   = "ami-0a54a14946e0bb52f"  # opera dev metrics - ol8
+    grq       = "ami-0a11c7d42e24fe7d5"  # opera dev grq - ol8
+    factotum  = "ami-0ce5e6a66b7732993"  # opera dev factotum - ol8
+    ci        = "ami-0cf8b9a10b8778646"  # opera-pcm-ci-temp
+    autoscale = "ami-0cf8b9a10b8778646"  # opera-pcm-ci-temp
   }
 }

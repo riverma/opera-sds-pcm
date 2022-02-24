@@ -74,6 +74,7 @@ module "common" {
   crid                                    = var.crid
   cluster_type                            = var.cluster_type
   l0a_timer_trigger_frequency             = var.l0a_timer_trigger_frequency
+  data_subscriber_timer_trigger_frequency = var.data_subscriber_timer_trigger_frequency
   obs_acct_report_timer_trigger_frequency = var.obs_acct_report_timer_trigger_frequency
   rs_fwd_bucket_ingested_expiration       = var.rs_fwd_bucket_ingested_expiration
   dataset_bucket                          = var.dataset_bucket
@@ -88,6 +89,8 @@ module "common" {
   purge_es_snapshot                       = var.purge_es_snapshot
   es_snapshot_bucket                      = var.es_snapshot_bucket
   es_bucket_role_arn                      = var.es_bucket_role_arn
+  artifactory_fn_user                     = var.artifactory_fn_user
+  artifactory_fn_api_key                  = var.artifactory_fn_api_key
 }
 
 locals {
